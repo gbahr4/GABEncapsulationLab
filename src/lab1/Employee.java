@@ -11,27 +11,113 @@ import java.util.Date;
  * @version     1.01
  */
 public class Employee {
-    String firstName;
-    String lastName;
-    public String ssn;
-    public Date birthDate;
-    boolean metWithHr;
-    boolean metDeptStaff;
-    boolean reviewedDeptPolicies;
-    boolean movedIn;
-    String cubeId;
+    private String firstName;
+    private String lastName;
+    private String ssn;
+    private Date birthDate;
+    private boolean metWithHr;
+    private boolean metDeptStaff;
+    private boolean reviewedDeptPolicies;
+    private boolean movedIn;
+    private String cubeId;
 
     public Employee() {
 
     }
 
+    public Employee(String firstName, String lastName, String ssn, 
+            Date birthDate, boolean metWithHr, boolean metDeptStaff, 
+            boolean reviewedDeptPolicies, boolean movedIn, String cubeId) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.ssn = ssn;
+        this.birthDate = birthDate;
+        this.metWithHr = metWithHr;
+        this.metDeptStaff = metDeptStaff;
+        this.reviewedDeptPolicies = reviewedDeptPolicies;
+        this.movedIn = movedIn;
+        this.cubeId = cubeId;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+    // needs validation
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+    // needs validation
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getSsn() {
+        return ssn;
+    }
+    // needs validation
+    public void setSsn(String ssn) {
+        this.ssn = ssn;
+    }
+
+    public Date getBirthDate() {
+        return birthDate;
+    }
+    // needs validation
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    public boolean hasMetWithHr() {
+        return metWithHr;
+    }
+
+    public void setMetWithHr(boolean metWithHr) {
+        this.metWithHr = metWithHr;
+    }
+
+    public boolean hasMetDeptStaff() {
+        return metDeptStaff;
+    }
+
+    public void setMetDeptStaff(boolean metDeptStaff) {
+        this.metDeptStaff = metDeptStaff;
+    }
+
+    public boolean hasReviewedDeptPolicies() {
+        return reviewedDeptPolicies;
+    }
+
+    public void setReviewedDeptPolicies(boolean reviewedDeptPolicies) {
+        this.reviewedDeptPolicies = reviewedDeptPolicies;
+    }
+
+    public boolean isMovedIn() {
+        return movedIn;
+    }
+
+    public void setMovedIn(boolean movedIn) {
+        this.movedIn = movedIn;
+    }
+
+    public String getCubeId() {
+        return cubeId;
+    }
+    // needs validation
+    public void setCubeId(String cubeId) {
+        this.cubeId = cubeId;
+    }
+
     // Assume this must be performed first
-    public void meetWithHrForBenefitAndSalryInfo() {
+    private void meetWithHrForBenefitAndSalryInfo() {
         metWithHr = true;
     }
 
     // Assume this is must be performed second
-    public void meetDepartmentStaff() {
+    private void meetDepartmentStaff() {
         if(metWithHr) {
             metDeptStaff = true;
         } else {
@@ -41,7 +127,7 @@ public class Employee {
     }
 
     // Assume this must be performed third
-    public void reviewDeptPolicies() {
+    private void reviewDeptPolicies() {
         if(metWithHr && metDeptStaff) {
             reviewedDeptPolicies = true;
         } else {
@@ -52,7 +138,7 @@ public class Employee {
     }
 
     // Assume this must be performed 4th
-    public void moveIntoCubicle(String cubeId) {
+    private void moveIntoCubicle(String cubeId) {
         if(metWithHr && metDeptStaff && reviewedDeptPolicies) {
             this.cubeId = cubeId;
             this.movedIn = true;
@@ -64,7 +150,14 @@ public class Employee {
         }
 
     }
-
+    
+    public void undergoEmployeeOrientation() {
+        this.meetWithHrForBenefitAndSalryInfo();
+        this.meetDepartmentStaff();
+        this.reviewDeptPolicies();
+        this.moveIntoCubicle(cubeId);
+    }
+    
     public String getStatus() {
         if(metWithHr && metDeptStaff
            && reviewedDeptPolicies && movedIn) {
