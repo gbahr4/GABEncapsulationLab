@@ -23,15 +23,16 @@ public class MainGUI extends javax.swing.JFrame implements ActionListener {
     private final int MAX_RECS = 10;
     private final int NOT_FOUND = -1;
 
-    String partNo;
-    int foundIndex = NOT_FOUND;
+    private String partNo;
+    private int foundIndex = NOT_FOUND;
     private String partDesc;
-    double partPrice;
+    private double partPrice;
+    private String searchNum;
 
     String[] partNums = new String[10];
     String[] partDescs = new String[10];
     double[] partPrices = new double[10];
-    int emptyRow;
+    private int emptyRow;
 
     /** Creates new form MainGUI */
     public MainGUI() {
@@ -257,6 +258,9 @@ public class MainGUI extends javax.swing.JFrame implements ActionListener {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEnterRecordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnterRecordActionPerformed
+       enterData();
+    }
+    private void enterData() {    
         foundIndex = NOT_FOUND;
 
         partNo = this.txtNewProdNo.getText();
@@ -295,7 +299,10 @@ public class MainGUI extends javax.swing.JFrame implements ActionListener {
 }//GEN-LAST:event_btnEnterRecordActionPerformed
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-        String searchNum = txtSearchPartNo.getText();
+        searchData();
+    }
+    private void searchData() {
+        searchNum = txtSearchPartNo.getText();
         if (searchNum != null && searchNum.length() > 0) {
             for (int i = 0; i < this.partNums.length; i++) {
                 if (searchNum.equalsIgnoreCase(partNums[i])) {

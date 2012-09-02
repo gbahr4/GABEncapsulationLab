@@ -3,17 +3,14 @@
  * and open the template in the editor.
  */
 package HomeRunDerby;
-// Lab Two
 
+import java.util.Random;
+// Lab Two
 /**
  *
  * @author Greg
  */
-
-import java.util.Random;
-
 public class Player {
-    
     private String playerName;
     private int roundOneScore;
     private int roundTwoScore;
@@ -69,6 +66,5 @@ public class Player {
     public int getTotalScore() {
         return totalScore;
     }
-    
     
 }
